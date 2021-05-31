@@ -14,6 +14,6 @@ export default gql`
 
       githubUsername: String
       password: String!
-    ): CreateAccountResult
+    ): User
   }
 `;
