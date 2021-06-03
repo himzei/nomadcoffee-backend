@@ -2,10 +2,11 @@ import client from "../../client";
 
 export default {
   Query: {
-    seeCoffeeShops: (_, { page }) =>
+    seeCoffeeShops: (_, { lastId }) =>
       client.coffeeShop.findMany({
-        take: 5,
-        skip: (page - 1) * 5,
+        take: 10,
+        skip: lastId ? 1 : 0,
+        ...(lastId && { cursor: { id: lastId } }),
         orderBy: {
           createdAt: "desc",
         },
