@@ -13,6 +13,6 @@ export default gql`
       location: String
       githubUsername: String
       password: String!
-    ): CreateAccountResult
+    ): CreateAccountResult!
   }
 `;
