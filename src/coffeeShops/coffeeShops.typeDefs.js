@@ -5,8 +5,8 @@ export default gql`
   type CoffeeShop {
     id: Int!
     name: String!
-    latitude: String!
-    longitude: String!
+    latitude: String
+    longitude: String
     user: User!
     categories(lastId: Int): [Category]
     photos(lastId: Int): [CoffeeShopPhoto]
