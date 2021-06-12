@@ -7,7 +7,7 @@ export default {
     createCoffeeShop: protectedResolver(
       async (
         _,
-        { name, latitude, longitude, category, file },
+        { name, latitude, longitude, category, photos },
         { loggedInUser }
       ) => {
         try {
@@ -27,8 +27,8 @@ export default {
             },
           });
 
-          if (file) {
-            const photoUrl = await handleFile(file, loggedInUser.id);
+          if (photos) {
+            const photoUrl = await handleFile(photos, loggedInUser.id);
             await client.coffeeShopPhoto.create({
               data: {
                 url: photoUrl,
