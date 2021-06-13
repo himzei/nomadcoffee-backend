@@ -1,6 +1,7 @@
 import { protectedResolver } from "../../users/users.utils";
 import client from "../../client";
 import { handleFile, processCategory } from "../coffeeShop.utils";
+import { uploadToS3 } from "../../../shared/shared.utils";
 
 export default {
   Mutation: {
@@ -28,7 +29,11 @@ export default {
           });
 
           if (photos) {
-            const photoUrl = await handleFile(photos, loggedInUser.id);
+            const photoUrl = await uploadToS3(
+              photos,
+              loggedInUser.id,
+              "photos"
+            );
             await client.coffeeShopPhoto.create({
               data: {
                 url: photoUrl,
