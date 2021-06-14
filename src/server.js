@@ -22,11 +22,15 @@ const apollo = new ApolloServer({
 
 const app = express();
 
+app.use(
+  cors({
+    origin: ["https://nomadcoffee-himzei.netlify.app", "http://localhost:3000"],
+  })
+);
 app.use(logger("tiny"));
 
 apollo.applyMiddleware({ app });
 app.use("/static", express.static("uploads"));
-app.use(cors());
 
 app.listen({ port: PORT }, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
