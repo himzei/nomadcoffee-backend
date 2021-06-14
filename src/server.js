@@ -21,8 +21,12 @@ const apollo = new ApolloServer({
 });
 
 const app = express();
+const corsOptions = {
+  origin: "https://nomadcoffee-himzei.netlify.app",
+  credential: true,
+};
 app.use(logger("tiny"));
-app.use(cors());
+app.use(cors(corsOptions));
 apollo.applyMiddleware({ app });
 app.use("/static", express.static("uploads"));
 
