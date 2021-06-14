@@ -22,7 +22,7 @@ const apollo = new ApolloServer({
 
 const app = express();
 app.use(logger("tiny"));
-app.use(cors({ origin: "https://nomadcoffee-himzei.netlify.app" }));
+app.use(cors());
 apollo.applyMiddleware({ app });
 app.use("/static", express.static("uploads"));
 
